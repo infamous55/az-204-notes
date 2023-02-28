@@ -118,5 +118,3 @@ az vm identity assign \
 - you can use private endpoints for Azure App Configuration to allow clients on a VNet to securely access data
   - the private endpoint uses an IP address from the VNet address space for your App Configuration store; this way, the network traffic traverses over the VNet using a private link which eliminates exposure to the public internet
   - when using a private endpoint, the DNS resource record is changed to an alias in a subdomain with the prefix `privatelink` resolving only from within the VNet
-
----

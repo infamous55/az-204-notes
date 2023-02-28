@@ -201,5 +201,3 @@ if (queueClient.Exists())
   queueClient.Delete();
 }
 ```
-
----

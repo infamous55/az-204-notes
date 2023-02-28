@@ -211,5 +211,3 @@ Note: API Management also supports OAuth2.0
     </when>
 </choose>
 ```
-
----

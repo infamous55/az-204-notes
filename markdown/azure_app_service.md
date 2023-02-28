@@ -199,5 +199,3 @@ tags: [azure, az-204]
 - auto swap isn't supported on Linux
 - you can route a percentage of traffic to a non-production/staging slot, and that request will have the `x-ms-routing-name=staging` cookie, while the requests routed to the production slot will have the `x-ms-routing-name=self` cookie
 - this specific type of routing can be done manually with a link that has the `?x-ms-routing-name=` query
-
----

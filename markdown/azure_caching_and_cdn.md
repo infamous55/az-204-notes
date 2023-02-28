@@ -280,5 +280,3 @@ private static void PromptPurgeCdnEndpoint(CdnManagementClient cdn)
   }
 }
 ```
-
----

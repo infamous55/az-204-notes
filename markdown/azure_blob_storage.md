@@ -210,5 +210,3 @@ Notes:
   - to set metadata use one of the following methods of the `BlobContainerClient` class:
     - `SetMetadata`
     - `SetMetadataAsync`
-
----

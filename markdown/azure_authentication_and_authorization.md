@@ -351,5 +351,3 @@ var newCalendar = await graphClient.Me.Calendars
 - consider multi-tenant applications
 - properly handle pagination and evolvable enumerations
 - cache or store data locally only if necessary and that specific use case is covered by your terms of use and privacy policy, and does not violate the Microsoft APIs Terms of Use
-
----

@@ -58,5 +58,3 @@ tags: [azure, az-204]
 - the name of the components is based on the cloud role name property and can be manually set or overwritten
 
 ![diagram](./../media/20230226201516.png)
-
----

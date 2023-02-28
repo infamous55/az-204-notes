@@ -333,5 +333,3 @@ finally
 ```
 
 Note: For production scenarios, it is recommended that the `EventProcessorClient` be used for reading and processing events.
-
----

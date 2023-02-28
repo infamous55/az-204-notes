@@ -251,5 +251,3 @@ function tax(income) {
   else return income * 0.4;
 }
 ```
-
----

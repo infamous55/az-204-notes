@@ -354,5 +354,3 @@ type: Microsoft.ContainerInstance/containerGroups
 }]
 ...
 ```
-
----

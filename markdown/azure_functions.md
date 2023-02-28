@@ -136,5 +136,3 @@ Note: serverless = PaaS + on-demand + consumption based pricing + elasticity + s
   - passing multiple parameters: with arrays/tuples/other complex data types
 - durable timers must be canceled if the code will not wait for them to complete (when escalating)
   - cancelation doesn't terminate the process, it allows the orchestrator to ignore the result
-
----
