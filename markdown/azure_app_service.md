@@ -78,8 +78,26 @@ tags: [azure, az-204]
 - the Free, Shared, Basic, Standard, and Premium plans all use the same worker VM type
 - the PremiumV2, and PremiumV3 plans each use a different worker VM type
 - when you change the VM type, you get a different set of outbound addresses
-- `az webapp show \ --resource-group <group_name> \ --name <app_name> \ --query outboundIpAddresses \ --output tsv` gives all current outbound addresses
-- `az webapp show \ --resource-group <group_name> \ --name <app_name> \ --query possibleOutboundIpAddresses \ --output tsv` gives all possible outbound addresses
+- get all current outbound adresses:
+
+```bash
+az webapp show \
+  --resource-group <group_name> \
+  --name <app_name> \
+  --query outboundIpAddresses \
+  --output tsv
+```
+
+- get all possible outbound addresses:
+
+```bash
+az webapp show \
+  --resource-group <group_name> \
+  --name <app_name> \
+  --query possibleOutboundIpAddresses \
+  --output tsv
+```
+
 - unless it is isolated, the App Service network can't be connected to an on-premises network, but there are inbound and outbound features that can be used
   - Inbound features:
     - App-assigned address
@@ -117,7 +135,12 @@ tags: [azure, az-204]
 - Web server logging, Detailed error logging, and Failed request tracing are only available on Windows
 - there are different levels of logging available for Windows in the Azure Portal, under App Service logs
 - you can specify the disk quota for the application logs if they run on File System and a value for the Retention Period
-- you can stream logs within the Azure Portal, or by using the CLI: `az webapp log tail --name appname --resource-group myResourceGroup`
+- you can stream logs within the Azure Portal, or by using the CLI:
+
+```bash
+az webapp log tail --name appname --resource-group myResourceGroup
+```
+
 - to access logs stored in Azure Storage blobs use the standard tools
 - to read logs stored in the App Service file system, the easiest way is to download the ZIP file in the browser at:
   - `https://<app-name>.scm.azurewebsites.net/api/logs/docker/zip` for Linux/container apps
@@ -181,7 +204,7 @@ tags: [azure, az-204]
 - you can swap with preview, pausing the process after changing the settings to validate everything works correctly
 - after preview (if it is the case), the source slot performs a complete restart
 - all instances are warmed up by automatically making an HTTP request to the application root to trigger local cache initialization
-- local cache initialization causes another restart on each instance
+  - local cache initialization causes another restart on each instance
 - you can also specify an URL for custom warm-ups
 - a warm-up is considered complete if the app responds with a valid HTTP code
 - some settings can't be swapped:
