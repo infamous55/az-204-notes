@@ -79,7 +79,7 @@ Note: the secondary region is always the region pair
 
 ## Lifecycle management policies
 
-- used to transition blobs to a cooler storage tier, delete blobs
+- used to transition blobs to a cooler storage tier or delete blobs
 - based on rules that run once per day at the storage account level
 - a policy is a `rules` array in a JSON document (partial JSON is NOT supported)
   - each rule has a `name` (case-sensitive, unique within a policy), `type` (the current valid type is "Lifecycle"), and `definition` object + `enabled` (boolean) option
@@ -176,7 +176,7 @@ Notes:
   ```csharp
   BlobClient blobClient = containerClient.GetBlobClient(fileName);
   using (FileStream downloadFileStream = File.OpenWrite(downloadFilePath)) {
-  await download.Content.CopyToAsync(downloadFileStream); downloadFileStream.Close();
+    await download.Content.CopyToAsync(downloadFileStream); downloadFileStream.Close();
   }
   ```
 
@@ -184,7 +184,7 @@ Notes:
 
   ```csharp
   await foreach (BlobItem blobItem in containerClient.GetBlobsAsync()) {
-  Console.WriteLine("\t" + blobItem.Name);
+    Console.WriteLine("\t" + blobItem.Name);
   }
   ```
 
@@ -193,7 +193,7 @@ Notes:
   ```csharp
   BlobDownloadInfo download = await blobClient.DownloadAsync();
   using (FileStream downloadFileStream = File.OpenWrite(downloadFilePath)) {
-  await download.Content.CopyToAsync(downloadFileStream);
+    await download.Content.CopyToAsync(downloadFileStream);
   }
   ```
 
