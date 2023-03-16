@@ -57,7 +57,7 @@ tags: [azure, az-204]
 ## General characteristics of ARM templates
 
 - JSON files
-- IaaS benefits (declarative syntax, repeatable results, automatic ordering of operations and parallelization when possible)
+- IaC benefits (declarative syntax, repeatable results, automatic ordering of operations and parallelization when possible)
 - templates are coverted into REST API operations
 - a template has the following sections:
   - parameters
