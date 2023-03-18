@@ -101,7 +101,7 @@ az vm identity assign \
 - is a fully managed service that complements Azure Key Vault, and it is used to:
   - centralize management and distribution of hierarchical configuration data in a secure manner
   - dynamically change application settings
-  - control feature availability in real-time (using feature flags, as described in [[Azure App Service]])
+  - control feature availability in real-time (using feature flags, as described in [Azure App Service](./azure_app_service.md))
 
 ## Configuration data as key-value pairs
 
