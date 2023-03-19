@@ -75,14 +75,15 @@ tags: [azure, az-204]
     <base />
     <choose>
       <when condition="@(context.Response.StatusCode == 200 && context.Product.Name.Equals("Starter"))">
-        <!-- NOTE that we are not using preserveContent=true when deserializing the response body stream into a JSON object since we don't intend to access it again. See details on https://learn.microsoft.com/azure/api-management/api-management-transformation-policies#SetBody -->
+        <!-- NOTE that we are not using preserveContent=true when deserializing the response body stream into a JSON object since we don't intend to access it again.
+        See details on https://learn.microsoft.com/azure/api-management/api-management-transformation-policies#SetBody -->
         <set-body>
           @{
             var response = context.Response.Body.As<JObject>();
             foreach (var key in new [] {"minutely", "hourly", "daily", "flags"}) {
-            response.Property (key).Remove ();
-           }
-          return response.ToString();
+              response.Property(key).Remove();
+            }
+            return response.ToString();
           }
         </set-body>
       </when>
@@ -99,28 +100,28 @@ tags: [azure, az-204]
 ```xml
 <choose>
     <when condition="Boolean expression | Boolean constant">
-        <!-- one or more policy statements to be applied if the above condition is true  -->
+        <!-- one or more policy statements to be applied if the above condition is true -->
     </when>
     <when condition="Boolean expression | Boolean constant">
-        <!-- one or more policy statements to be applied if the above condition is true  -->
+        <!-- one or more policy statements to be applied if the above condition is true -->
     </when>
     <otherwise>
-        <!-- one or more policy statements to be applied if none of the above conditions are true  -->
-  </otherwise>
+        <!-- one or more policy statements to be applied if none of the above conditions are true -->
+    </otherwise>
 </choose>
 ```
 
 - the `forward-request` policy forwards the incoming request to the backend service specified in the request context
 
 ```xml
-<forward-request timeout="time in seconds" follow-redirects="true | false"/>
+<forward-request timeout="time in seconds" follow-redirects="true | false" />
 ```
 
 - the `limit-concurrency` policy prevents enclosed policies from executing by more than the specified number of requests at any time; upon exceeding that number, new requests will fail immediately with a `429 Too Many Requests` status code
 
 ```xml
 <limit-concurrency key="expression" max-count="number">
-  <!-- nested policy statements -->
+    <!-- nested policy statements -->
 </limit-concurrency>
 ```
 
@@ -128,14 +129,14 @@ tags: [azure, az-204]
 
 ```xml
 <log-to-eventhub logger-id="id of the logger entity" partition-id="index of the partition where messages are sent" partition-key="value used for partition assignment">
-  <!-- Expression returning a string to be logged -->
+    <!-- Expression returning a string to be logged -->
 </log-to-eventhub>
 ```
 
 - the `mock-response` is used to mock APIs and operations by generating sample responses from examples or schemas; if neither examples nor schemas are found, responses with no content are returned
 
 ```xml
-<mock-response status-code="code" content-type="media type"/>
+<mock-response status-code="code" content-type="media type" />
 ```
 
 - the `retry` policy executes its child policies once and then retries their execution until the retry `condition` becomes `false` or the retry `count` is exhausted
@@ -156,9 +157,9 @@ tags: [azure, az-204]
 
 ```xml
 <return-response response-variable-name="existing context variable">
-  <set-header/>
-  <set-body/>
-  <set-status/>
+    <set-header />
+    <set-body />
+    <set-status />
 </return-response>
 ```
 
@@ -180,7 +181,7 @@ Note: API Management also supports OAuth2.0
 
 ```xml
 <choose>
-    <when condition="@(context.Request.Certificate == null || context.Request.Certificate.Thumbprint != "desired-thumbprint")" >
+    <when condition="@(context.Request.Certificate == null || context.Request.Certificate.Thumbprint != "desired-thumbprint")">
         <return-response>
             <set-status code="403" reason="Invalid client certificate" />
         </return-response>
@@ -192,7 +193,7 @@ Note: API Management also supports OAuth2.0
 
 ```xml
 <choose>
-    <when condition="@(context.Request.Certificate == null || !context.Request.Certificate.Verify()  || !context.Deployment.Certificates.Any(c => c.Value.Thumbprint == context.Request.Certificate.Thumbprint))" >
+    <when condition="@(context.Request.Certificate == null || !context.Request.Certificate.Verify()  || !context.Deployment.Certificates.Any(c => c.Value.Thumbprint == context.Request.Certificate.Thumbprint))">
         <return-response>
             <set-status code="403" reason="Invalid client certificate" />
         </return-response>
@@ -204,8 +205,8 @@ Note: API Management also supports OAuth2.0
 
 ```xml
 <choose>
-    <when condition="@(context.Request.Certificate == null || context.Request.Certificate.Issuer != "trusted-issuer" || context.Request.Certificate.SubjectName.Name != "expected-subject-name")" >
-      <return-response>
+    <when condition="@(context.Request.Certificate == null || context.Request.Certificate.Issuer != "trusted-issuer" || context.Request.Certificate.SubjectName.Name != "expected-subject-name")">
+        <return-response>
             <set-status code="403" reason="Invalid client certificate" />
         </return-response>
     </when>
