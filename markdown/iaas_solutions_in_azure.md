@@ -58,7 +58,7 @@ tags: [azure, az-204]
 
 - JSON files
 - IaC benefits (declarative syntax, repeatable results, automatic ordering of operations and parallelization when possible)
-- templates are coverted into REST API operations
+- templates are converted into REST API operations
 - a template has the following sections:
   - parameters
   - variables (to define reusable values)
